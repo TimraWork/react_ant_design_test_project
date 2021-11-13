@@ -1,0 +1,7 @@
+$accent: #1890ff;
+$text: #1a1a1a;
+
+@function rem($px) {
+	@return $px / 16px + 0rem;
+	@return $px;
+}
