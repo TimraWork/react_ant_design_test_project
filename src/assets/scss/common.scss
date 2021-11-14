@@ -1,8 +1,18 @@
 @import "./variables";
 @import '~antd/dist/antd.css';
 
-html, body, #root{
-    height: 100%;
+.ant-layout{
+    min-height: 100vh; 
+    overflow: auto;
+}
+
+.ant-layout-content{
+   max-width: 1200px;
+   margin: rem(30px) auto; 
+}
+
+.ant-layout-header{
+    text-align: center;
 }
 
 html{

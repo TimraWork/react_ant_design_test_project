@@ -1,12 +1,20 @@
-import React from 'react';
-import './App.css';
-import { Button } from 'antd';
+import "./assets/scss/common.scss";
+import { Layout } from 'antd';
+import { Timer } from './components/Timer/Timer';
+import ButtonAddCard from './components/ButtonAddCard/ButtonAddCard';
+
+const { Content, Header } = Layout;
 
 function App() {
   return (
-    <div className="App">
-      <Button className="animationPulse" type="primary">Создать карточку</Button>
-    </div>
+      <Layout>
+        <Header>
+          <Timer />
+        </Header>
+        <Content>
+          <ButtonAddCard />
+        </Content>
+      </Layout>
   );
 }
 
