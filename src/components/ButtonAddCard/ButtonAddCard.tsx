@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import { Button } from 'antd';
 import { ModalAddCard } from '../ModalAddCard/ModalAddCard';
+import './ButtonAddCard.scss'
 
 const ButtonAddCard: React.FC = () => {
     const [isModalVisible, setIsModalVisible] = useState(false);
