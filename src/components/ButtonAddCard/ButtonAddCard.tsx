@@ -1,9 +1,13 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
 import { Button } from 'antd';
 import { ModalAddCard } from '../ModalAddCard/ModalAddCard';
 import './ButtonAddCard.scss'
+import { CardContext } from '../../localState/cardContext';
+
 
 const ButtonAddCard: React.FC = () => {
+    //@ts-ignore
+    const { dispatchCard } = useContext(CardContext);
     const [isModalVisible, setIsModalVisible] = useState(false);
 
     const showModal = () => setIsModalVisible(true);
@@ -11,6 +15,13 @@ const ButtonAddCard: React.FC = () => {
 
     const handleOk = (city:string, population: string) => {
         console.log(city, population);
+        dispatchCard({
+            type: 'add',
+            payload: {
+                city,
+                population
+            }
+        })
         setIsModalVisible(false);
     }
 
