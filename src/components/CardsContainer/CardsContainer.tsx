@@ -8,17 +8,14 @@ const CardsContainer: React.FC = () => {
     //@ts-ignore
     const { cardState } = useContext(CardContext);
     
-    
     return (
         <>
             { cardState.length > 2 ? <FilterCards /> : null}
             
             <Row gutter={16}>
-                {
-                    cardState.map((el:any)=>(
-                        <Col span={8} key={el.key}><CardItem el={el} /></Col> 
-                    ))
-                }
+                { cardState.map((el:any)=>(
+                    <Col span={8} key={el.id}><CardItem el={el} key={el.key} /></Col> 
+                ))} 
             </Row>
         </>
     );

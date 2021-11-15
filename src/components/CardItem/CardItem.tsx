@@ -14,8 +14,8 @@ const CardItem: React.FC<ICardItemProps> = ({ el }) => {
     const [isModalVisible, setIsModalVisible] = useState(false);
 
     const onCardDelete = () => setIsModalVisible(true);
-
     const handleCancel = () => setIsModalVisible(false);
+    
     const onDeleteCard = () => {
         dispatchCard({
             type: 'delete',

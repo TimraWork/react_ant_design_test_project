@@ -17,6 +17,10 @@ export function cardReducer(state:any, action:any) {
             const { id } = action.payload;
             return state.filter( (el:any) => el.id !== id );
         }
+        case 'filter': {
+            const { searchValue } = action.payload;
+            return state.filter( (el:any) => el.city !== el.city.includes(searchValue) || el.population !== el.population.includes(searchValue) );
+        }
         default:
             throw new Error("Unknown state");
     }

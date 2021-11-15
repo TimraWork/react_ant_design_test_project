@@ -6,17 +6,17 @@ import ButtonAddCard from './components/ButtonAddCard/ButtonAddCard';
 import { cardReducer } from './localState/cardReducer';
 import { CardContext } from './localState/cardContext';
 import { CardsContainer } from './components/CardsContainer/CardsContainer';
+import { useEffect } from 'react';
 
 const { Content, Header } = Layout;
 
 const App: React.FC = () => {
-  const [cardState, dispatchCard] = useReducer(cardReducer, [
-    {
-      id: '1',
-      city: 'Москва',
-      population: '1212'
-    }
-  ]);
+  //@ts-ignore
+  const [cardState, dispatchCard] = useReducer(cardReducer, JSON.parse(localStorage.getItem("localState")) || []);
+
+  useEffect(() => {
+    localStorage.setItem("localState", JSON.stringify(cardState));
+  }, [cardState])
 
   return (
       <Layout>

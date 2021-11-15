@@ -27,7 +27,7 @@ const ButtonAddCard: React.FC = () => {
 
     return (
         <div className="ButtonAddCard">
-            <Button onClick={showModal} className="animationPulse" type="primary">Создать карточку</Button> 
+            <Button onClick={showModal} className="animationPulse" type="primary">Создать карточку</Button>
             <ModalAddCard isModalVisible={isModalVisible} handleOk={handleOk} handleCancel={handleCancel} />
         </div>
     );
