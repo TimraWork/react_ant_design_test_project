@@ -1,22 +1,22 @@
-import React, {useState} from 'react';
+import React, {useReducer} from 'react';
 import "./assets/scss/common.scss";
-import { Layout, Col, Row } from 'antd';
+import { Layout } from 'antd';
 import { Timer } from './components/Timer/Timer';
 import ButtonAddCard from './components/ButtonAddCard/ButtonAddCard';
-import { CardItem } from "./components/CardItem/CardItem";
-import { ModalDeleteCard } from "./components/ModalDeleteCard/ModalDeleteCard";
+import { cardReducer } from './localState/cardReducer';
+import { CardContext } from './localState/cardContext';
+import { CardsContainer } from './components/CardsContainer/CardsContainer';
 
 const { Content, Header } = Layout;
 
 const App: React.FC = () => {
-  const [isModalVisible, setIsModalVisible] = useState(false);
-
-  const showModal = () => setIsModalVisible(true);
-  const handleCancel = () =>  setIsModalVisible(false);
-
-  const onCardDelete = () => {
-    showModal();
-  }
+  const [cardState, dispatchCard] = useReducer(cardReducer, [
+    {
+      id: '1',
+      city: 'Москва',
+      population: '1212'
+    }
+  ]);
 
   return (
       <Layout>
@@ -24,13 +24,10 @@ const App: React.FC = () => {
           <Timer />
         </Header>
         <Content>
-          <ButtonAddCard />
-          <Row gutter={16}>
-            <Col span={8}><CardItem onCardDelete={onCardDelete} /></Col>
-            <Col span={8}><CardItem onCardDelete={onCardDelete} /></Col>
-            <Col span={8}><CardItem onCardDelete={onCardDelete} /></Col>
-          </Row>
-          <ModalDeleteCard isModalVisible={isModalVisible} handleOk = {handleCancel} handleCancel = {handleCancel} />
+          <CardContext.Provider value={{ cardState, dispatchCard }}>
+            <ButtonAddCard />
+            <CardsContainer />
+          </CardContext.Provider>
         </Content>
       </Layout>
   );
