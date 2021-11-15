@@ -1,20 +1,26 @@
-import React, {useContext} from 'react';
+import React, { useContext } from 'react';
 import { CardContext } from '../../localState/cardContext';
 import { CardItem } from '../CardItem/CardItem';
 import { Col, Row } from 'antd';
+import { FilterCards } from '../FilterCards/FilterCards';
 
 const CardsContainer: React.FC = () => {
     //@ts-ignore
     const { cardState } = useContext(CardContext);
-   
+    
+    
     return (
-        <Row gutter={16}>
-             {
-                cardState.map((el:any)=>(
-                    <Col span={8} key={el.key}><CardItem el={el} /></Col> 
-                ))
-            }
-        </Row>
+        <>
+            { cardState.length > 2 ? <FilterCards /> : null}
+            
+            <Row gutter={16}>
+                {
+                    cardState.map((el:any)=>(
+                        <Col span={8} key={el.key}><CardItem el={el} /></Col> 
+                    ))
+                }
+            </Row>
+        </>
     );
 }
 
