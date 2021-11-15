@@ -3,6 +3,8 @@ import { Button } from 'antd';
 import { ModalAddCard } from '../ModalAddCard/ModalAddCard';
 import './ButtonAddCard.scss'
 import { CardContext } from '../../localState/cardContext';
+import { generateHex } from '../../utils/generateHex';
+import { invertHex } from '../../utils/invertHex';
 
 
 const ButtonAddCard: React.FC = () => {
@@ -14,12 +16,14 @@ const ButtonAddCard: React.FC = () => {
     const handleCancel = () =>  setIsModalVisible(false);
 
     const handleOk = (city:string, population: string) => {
-        console.log(city, population);
+        const hex = generateHex();
         dispatchCard({
             type: 'add',
             payload: {
                 city,
-                population
+                population,
+                backgroundColor: hex,
+                textColor: invertHex(hex)
             }
         })
         setIsModalVisible(false);
