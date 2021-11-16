@@ -15,7 +15,7 @@ const CardItem: React.FC<ICardItemProps> = ({ el }) => {
 
     const onCardDelete = () => setIsModalVisible(true);
     const handleCancel = () => setIsModalVisible(false);
-    
+
     const onDeleteCard = () => {
         dispatchCard({
             type: 'delete',
@@ -27,12 +27,21 @@ const CardItem: React.FC<ICardItemProps> = ({ el }) => {
     }
 
     return (
-        <>
-            <Card className="CardItem" style={{ background: "#" + el.backgroundColor, color: "#" + el.textColor}}  title={el.city} extra={<Tooltip title="Удалить"> <Button onClick={onCardDelete} shape="circle" type="primary" danger icon={<DeleteOutlined />} /> </Tooltip>} >
-                <p>Численность: {el.population}</p>
-            </Card>
-            <ModalDeleteCard isModalVisible={isModalVisible} handleOk = {onDeleteCard} handleCancel = {handleCancel} />
-        </>
+      <>
+        <Card
+          className="CardItem"
+          style={{background: el.backgroundColor, color: el.textColor, border: 'none', borderRadius: '5px'}}
+          title={<span style={{color: el.textColor}}>{el.city}</span>}
+          extra={
+            <Tooltip title="Удалить">
+              <Button onClick={onCardDelete} shape="circle" type="primary" style={{backgroundColor: el.textColor, borderColor: el.textColor}} icon={<DeleteOutlined />} />
+            </Tooltip>
+          }
+        >
+          <p>Численность: {el.population}</p>
+        </Card>
+        <ModalDeleteCard isModalVisible={isModalVisible} handleOk={onDeleteCard} handleCancel={handleCancel} />
+      </>
     );
 }
 
