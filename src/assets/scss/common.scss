@@ -2,13 +2,12 @@
 @import '~antd/dist/antd.css';
 
 .ant-layout{
-    min-height: 100vh; 
+    min-height: 100vh;
     overflow: auto;
 }
 
 .ant-layout-content{
-//    max-width: 1200px;
-   margin: rem(30px); 
+   margin: rem(30px);
 }
 
 .ant-layout-header{
