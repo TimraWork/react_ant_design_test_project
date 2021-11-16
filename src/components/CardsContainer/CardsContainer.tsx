@@ -3,9 +3,9 @@ import { CardContext } from '../../localState/cardContext';
 import { CardItem } from '../CardItem/CardItem';
 import { Alert, Col, Row } from 'antd';
 import { FilterCards } from '../FilterCards/FilterCards';
+import { CardType } from 'antd/lib/card';
 
 const CardsContainer: React.FC = () => {
-    // @ts-ignore
     const { cardState } = useContext(CardContext);
 
     const [cards, setCards] = useState(cardState);
@@ -17,7 +17,6 @@ const CardsContainer: React.FC = () => {
     
     useEffect(() => {
         if(searchValue) {
-            // @ts-ignore
             const newCards = cardState.filter(({city, population} ) => (city.includes(searchValue) || population.includes(searchValue)));
             setCards( newCards );
         } else {
@@ -29,11 +28,12 @@ const CardsContainer: React.FC = () => {
         <>
             { cardState.length > 2 ? <FilterCards onSearch={onSearch} /> : null}
 
-            <Row gutter={1} justify="center">
-                { cards.map((el:any)=>(
-                    <Col span={8} key={el.id}><CardItem el={el} key={el.key} /></Col>
+            <Row gutter={[10, 10]} justify="center" >
+                { cards.map((el)=>(
+                    <Col key={el.id} xs={24} sm={12} md={8} lg={6} xl={4}><CardItem el={el} /></Col>
                 ))}
-                {!cards.length && <Alert message="Нет записей, соответствующих строке поиска" type="info" showIcon />}
+                {!cardState.length ? <Alert message="Добавьте карточку ↑" type="info" showIcon /> : null}
+                {!cards.length && cardState.length ? <Alert message="Нет карточек, соответствующих строке поиска" type="info" showIcon /> : null}
             </Row>
         </>
     );

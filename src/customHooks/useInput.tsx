@@ -7,14 +7,14 @@ const useInput = (initialValue: string) => {
         setValue(event.target.value);
     };
 
-    const resetValue = () => {
+    const reset = () => {
         setValue("");
     }
 
     return {
         value,
         onChange: handleChange,
-        resetValue
+        reset
     };
 };
 

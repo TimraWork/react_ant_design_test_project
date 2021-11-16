@@ -1,0 +1,2 @@
+export const actionAddCard = (city: string, population: string, backgroundColor: string, textColor: string) => ({type: 'add', payload: {city, population, backgroundColor, textColor}} as const);
+export const actionDeleteCard = (id: string) => ({ type: 'delete', payload: {id} } as const);

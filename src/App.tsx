@@ -4,15 +4,16 @@ import { Layout } from 'antd';
 import { Timer } from './components/Timer/Timer';
 import ButtonAddCard from './components/ButtonAddCard/ButtonAddCard';
 import { cardReducer } from './localState/cardReducer';
-import { CardContext } from './localState/cardContext';
+import { CardContext, CardType } from './localState/cardContext';
 import { CardsContainer } from './components/CardsContainer/CardsContainer';
 import { useEffect } from 'react';
 
 const { Content, Header } = Layout;
+const localStorageData = localStorage.getItem("localState");
+const localStorageParsedData:CardType[] = localStorageData ? JSON.parse(localStorageData) : [];
 
 const App: React.FC = () => {
-  //@ts-ignore
-  const [cardState, dispatchCard] = useReducer(cardReducer, JSON.parse(localStorage.getItem("localState")) || []);
+  const [cardState, dispatchCard] = useReducer(cardReducer, localStorageParsedData);
 
   useEffect(() => {
     localStorage.setItem("localState", JSON.stringify(cardState));

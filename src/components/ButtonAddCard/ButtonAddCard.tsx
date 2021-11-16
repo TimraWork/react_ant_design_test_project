@@ -6,14 +6,12 @@ import { CardContext } from '../../localState/cardContext';
 import { generateHex } from '../../utils/generateHex';
 import { invertHex } from '../../utils/invertHex';
 
-
 const ButtonAddCard: React.FC = () => {
-    //@ts-ignore
     const { dispatchCard } = useContext(CardContext);
     const [isModalVisible, setIsModalVisible] = useState(false);
 
     const showModal = () => setIsModalVisible(true);
-    const handleCancel = () =>  setIsModalVisible(false);
+    const handleCancel = () => setIsModalVisible(false);
 
     const handleOk = (city:string, population: string) => {
         const hex = generateHex();

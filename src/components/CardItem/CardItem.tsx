@@ -2,15 +2,15 @@ import React, {useState, useContext} from 'react';
 import { Card, Button, Tooltip } from 'antd';
 import { DeleteOutlined } from '@ant-design/icons';
 import { ModalDeleteCard } from '../ModalDeleteCard/ModalDeleteCard';
-import { CardContext } from '../../localState/cardContext';
+import { CardContext, CardType } from '../../localState/cardContext';
+import './CardItem.scss';
 
 export type ICardItemProps = {
-    el: any
+    el: CardType
 }
 
 const CardItem: React.FC<ICardItemProps> = ({ el }) => {
-    //@ts-ignore
-    const { dispatchCard } = useContext(CardContext); 
+    const { dispatchCard } = useContext(CardContext);
     const [isModalVisible, setIsModalVisible] = useState(false);
 
     const onCardDelete = () => setIsModalVisible(true);
@@ -28,7 +28,7 @@ const CardItem: React.FC<ICardItemProps> = ({ el }) => {
 
     return (
         <>
-            <Card  style={{ background: "#" + el.backgroundColor, color: "#" + el.textColor}}  title={el.city} extra={<Tooltip title="Удалить"> <Button onClick={onCardDelete} shape="circle" type="primary" danger icon={<DeleteOutlined />} /> </Tooltip>} >
+            <Card className="CardItem" style={{ background: "#" + el.backgroundColor, color: "#" + el.textColor}}  title={el.city} extra={<Tooltip title="Удалить"> <Button onClick={onCardDelete} shape="circle" type="primary" danger icon={<DeleteOutlined />} /> </Tooltip>} >
                 <p>Численность: {el.population}</p>
             </Card>
             <ModalDeleteCard isModalVisible={isModalVisible} handleOk = {onDeleteCard} handleCancel = {handleCancel} />
