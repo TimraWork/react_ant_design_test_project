@@ -20,8 +20,8 @@ const ButtonAddCard: React.FC = () => {
             payload: {
                 city,
                 population,
-                backgroundColor: hex,
-                textColor: invertHex(hex)
+                backgroundColor: "#" + hex,
+                textColor: "#" + invertHex(hex)
             }
         })
         setIsModalVisible(false);

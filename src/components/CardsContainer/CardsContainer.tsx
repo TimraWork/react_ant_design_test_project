@@ -3,7 +3,6 @@ import { CardContext } from '../../localState/cardContext';
 import { CardItem } from '../CardItem/CardItem';
 import { Alert, Col, Row } from 'antd';
 import { FilterCards } from '../FilterCards/FilterCards';
-import { CardType } from 'antd/lib/card';
 
 const CardsContainer: React.FC = () => {
     const { cardState } = useContext(CardContext);
@@ -26,7 +25,7 @@ const CardsContainer: React.FC = () => {
 
     return (
         <>
-            { cardState.length > 2 ? <FilterCards onSearch={onSearch} /> : null}
+            { cardState.length > 1 ? <FilterCards onSearch={onSearch} /> : null}
 
             <Row gutter={[10, 10]} justify="center" >
                 { cards.map((el)=>(

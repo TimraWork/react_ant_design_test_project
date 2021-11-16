@@ -20,8 +20,10 @@ const ModalAddCard: React.FC<IModalAddCardProps> = ({ isModalVisible, handleOk, 
     return (
         <Modal afterClose={onModalClose} title="Создать карточку" visible={isModalVisible} onOk={() => handleOk(city.value, population.value)} onCancel={handleCancel} cancelText="Отмена" okText="Создать">
             <Space direction="vertical" style={{ width: '100%' }}>
-                <Input autoFocus={true} placeholder="Введите название города" value={city.value} onChange={city.onChange} />
-                <Input type="number" placeholder="Введите численность населения" value={population.value} onChange={population.onChange} />
+                <Input autoFocus={true} placeholder="Введите название города" value={city.value} onChange={city.onChange} onBlur={city.onBlur} />
+                {city.error && <div className="error">{city.error}</div>}
+                <Input type="number" placeholder="Введите численность населения" value={population.value} onChange={population.onChange} onBlur={population.onBlur} />
+                {population.error && <div className="error">{population.error}</div>}
             </Space>
         </Modal>
     );
