@@ -2,6 +2,7 @@
   "name": "antd-demo-ts",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://timrawork.github.io/react_ant_design_test_project",
   "dependencies": {
     "@ant-design/icons": "^4.7.0",
     "@testing-library/jest-dom": "^5.15.0",
@@ -24,7 +25,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "deploy": "react-scripts build && gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
@@ -45,6 +47,7 @@
     ]
   },
   "devDependencies": {
-    "@types/uuid": "^8.3.1"
+    "@types/uuid": "^8.3.1",
+    "gh-pages": "^3.2.3"
   }
 }
