@@ -13,7 +13,7 @@ const CardsContainer: React.FC = () => {
     const onSearch = (value: string) => {
         setSearchValue(value);
     }
-    
+
     useEffect(() => {
         if(searchValue) {
             const newCards = cardState.filter(({city, population} ) => (city.includes(searchValue) || population.includes(searchValue)));
