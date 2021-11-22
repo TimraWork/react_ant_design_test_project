@@ -1,13 +1,16 @@
-import React, {useState, useContext} from 'react';
+import React, {useState} from 'react';
 import { Button } from 'antd';
 import { ModalAddCard } from '../ModalAddCard/ModalAddCard';
-import './ButtonAddCard.scss'
-import { CardContext } from '../../localState/cardContext';
+import './ButtonAddCard.scss';
 import { generateHex } from '../../utils/generateHex';
 import { invertHex } from '../../utils/invertHex';
+import { ActionTypes } from '../../@types/types';
 
-const ButtonAddCard: React.FC = () => {
-    const { dispatchCard } = useContext(CardContext);
+export type IButtonAddCardProps = {
+    dispatchCard: React.Dispatch<ActionTypes>
+}
+
+const ButtonAddCard: React.FC<IButtonAddCardProps> = ({dispatchCard}) => {
     const [isModalVisible, setIsModalVisible] = useState(false);
 
     const showModal = () => setIsModalVisible(true);

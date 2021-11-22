@@ -1,6 +1,15 @@
 import { ActionTypes } from './../@types/types.d';
 import { v4 as uuidv4 } from 'uuid';
-import { CardType, InitialStateType } from './cardContext';
+
+export type CardType = {
+    id: string;
+    city: string;
+    population: string;
+    backgroundColor: string;
+    textColor: string;
+}
+
+export type InitialStateType = CardType[] | [];
 
 export function cardReducer(state:InitialStateType, action:ActionTypes) : InitialStateType {
     switch(action.type) {

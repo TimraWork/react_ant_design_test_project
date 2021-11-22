@@ -1,17 +1,18 @@
-import React, {useState, useContext} from 'react';
+import React, {useState} from 'react';
 import { Card, Button, Tooltip } from 'antd';
 import { DeleteOutlined } from '@ant-design/icons';
 import { ModalDeleteCard } from '../ModalDeleteCard/ModalDeleteCard';
-import { CardContext, CardType } from '../../localState/cardContext';
 import './CardItem.scss';
+import { ActionTypes } from '../../@types/types';
+import { CardType } from '../../localState/cardReducer';
 
 export type ICardItemProps = {
-    el: CardType
+    el: CardType,
+    dispatchCard: React.Dispatch<ActionTypes>
 }
 
-const CardItem: React.FC<ICardItemProps> = ({ el }) => {
-    const { dispatchCard } = useContext(CardContext);
-    const [isModalVisible, setIsModalVisible] = useState(false);
+const CardItem: React.FC<ICardItemProps> = ({ el, dispatchCard }) => {
+   const [isModalVisible, setIsModalVisible] = useState(false);
 
     const onCardDelete = () => setIsModalVisible(true);
     const handleCancel = () => setIsModalVisible(false);
